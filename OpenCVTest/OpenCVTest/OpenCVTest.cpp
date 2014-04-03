@@ -7,8 +7,7 @@ using namespace cv;
 int main(){
 	Mat im;
 	im = imread("lena.jpg");
-	imshow("luna", im);
+	imshow("lena", im);
 	waitKey(0);
 	return 0;
 }
-
