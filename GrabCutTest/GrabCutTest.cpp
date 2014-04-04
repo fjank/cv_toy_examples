@@ -25,10 +25,10 @@ int main(){
 	//GrabCut的mask，这里不起作用，因为grabcut参数设置为GC_INIT_WITH_RECT
 	mask.create(im.size(), CV_8UC1);
 	mask.setTo(GC_BGD);
-	(mask(rect)).setTo(Scalar(GC_FGD));
+	(mask(rect)).setTo(Scalar(GC_PR_FGD));
 	
 	//用GC_INIT_WITH_RECT时候，Rect中间是GC_PR_FGD，矩形外面是GC_BGD
-	grabCut(im, mask, rect, bgdmodel, fgdmodel, 1, GC_INIT_WITH_MASK);
+	grabCut(im, mask, rect, bgdmodel, fgdmodel, 1, GC_INIT_WITH_RECT);
 
 	res.setTo(255, mask&1);
 	imwrite("result1.jpg", res);

@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9722C6F7-C589-4694-860C-44DF675C763D}</ProjectGuid>
+    <ProjectGuid>{E88D5E05-44EB-4531-B097-E6B6A1FFD806}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>OpenCVTest</RootNamespace>
   </PropertyGroup>
@@ -69,7 +69,6 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>D:\opencv\build\include;D:\opencv\build\include\opencv;D:\opencv\build\include\opencv2;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
     <LibraryPath>D:\opencv\build\x64\vc10\lib;$(VCInstallDir)lib\amd64;$(VCInstallDir)atlmfc\lib\amd64;$(WindowsSdkDir)lib\x64;</LibraryPath>
-    <EmbedManifest>false</EmbedManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
