@@ -1,0 +1,1 @@
+An example of GrabCut from OpenCV c++ tutorial.

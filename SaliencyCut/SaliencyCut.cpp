@@ -8,36 +8,42 @@ void setMaskBorder(Mat &mask, int borderWidth = 15){
 	//imshow("roi", mask);
 }
 
-void saliencyCut(Mat im, Mat salim, Mat &outim, bool intermediate, int thres, int maxIter, int borderWidth){
+void saliencyCut(Mat im, Mat salim, Mat &outim, bool intermediate, string intermediatePath, string intermediatePrefix, int thres, int maxIter, int borderWidth){
 	//salim.copyTo(outim);
 	//根据thres来二值化图像
 	threshold(salim, outim, thres, 255, CV_THRESH_BINARY);
 	
 	//初始化mask
-	Mat mask(im.size(), CV_8UC1, Scalar(GC_BGD));
-	mask.setTo(GC_PR_FGD, outim&1);
+	Mat mask(im.size(), CV_8UC1, Scalar(GC_PR_FGD));
+	mask.setTo(GC_PR_BGD, outim==0);
 	setMaskBorder(mask, borderWidth);
 	//imshow("mask", mask);
 	//waitKey(0);
 
 	//第一次grabcut
 	Mat bgdmodel, fgdmodel;
-	Rect rect;
+	Rect rect;//(10, 10, im.size().width-20, im.size().height-20);//实际上rect在代码中是没有用上的
 	grabCut(im, mask, rect, bgdmodel, fgdmodel, 1, GC_INIT_WITH_MASK);
 
 	outim.setTo(0);
-	outim.setTo(255, mask);
+	outim.setTo(255, mask&1);
+
+	//如果设置了flag，那么输出中间结果
+	if (intermediate){
+		char outimname[20];
+		imwrite(intermediatePath+intermediatePrefix+"iter0.jpg", outim);
+	}
 
 	//dilation和erosion的kernel的定义
 	Mat dilation_dst;
 	int dilation_type = MORPH_RECT;
-	int dilation_size = 3;
+	int dilation_size = 5;
 	Mat d_element = getStructuringElement( dilation_type,
 		Size( 2*dilation_size + 1, 2*dilation_size+1 ),
 		Point( dilation_size, dilation_size ) );
 	Mat erosion_dst;
 	int erosion_type = MORPH_RECT;
-	int erosion_size = 3;
+	int erosion_size = 5;
 	Mat e_element = getStructuringElement( erosion_type,
 		Size( 2*erosion_size + 1, 2*erosion_size+1 ),
 		Point( erosion_size, erosion_size ) );
@@ -65,15 +71,14 @@ void saliencyCut(Mat im, Mat salim, Mat &outim, bool intermediate, int thres, in
 
 		//设置输出图片
 		outim.setTo(0);
-		outim.setTo(255, mask);
+		outim.setTo(255, mask&1);
 
 		//输出中间结果
 		if (intermediate){
 			char outimname[20];
 			sprintf(outimname, "iter%d.jpg", iter);
-			imwrite(outimname, outim);
+			imwrite(intermediatePath+intermediatePrefix+outimname, outim);
 		}
-		
 	}
 
 }
