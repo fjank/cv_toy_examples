@@ -1,0 +1,1 @@
+Copyright from (Implementation of thinning algorithm in OpenCV)[http://opencv-code.com/quick-tips/implementation-of-thinning-algorithm-in-opencv/]

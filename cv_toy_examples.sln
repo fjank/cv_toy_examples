@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GrabCutTest", "GrabCutTest\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SaliencyCut", "SaliencyCut\SaliencyCut\SalencyCut.vcxproj", "{B6B34723-BAA8-4A97-ACEA-9B53F73B07EA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ThinTest", "ThinTest\ThinTest.vcxproj", "{8F5DDEF7-514A-4B41-A80A-D61624F13371}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -49,6 +51,13 @@ Global
 		{B6B34723-BAA8-4A97-ACEA-9B53F73B07EA}.Release|Win32.Build.0 = Release|Win32
 		{B6B34723-BAA8-4A97-ACEA-9B53F73B07EA}.Release|x64.ActiveCfg = Release|x64
 		{B6B34723-BAA8-4A97-ACEA-9B53F73B07EA}.Release|x64.Build.0 = Release|x64
+		{8F5DDEF7-514A-4B41-A80A-D61624F13371}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8F5DDEF7-514A-4B41-A80A-D61624F13371}.Debug|Win32.Build.0 = Debug|Win32
+		{8F5DDEF7-514A-4B41-A80A-D61624F13371}.Debug|x64.ActiveCfg = Debug|x64
+		{8F5DDEF7-514A-4B41-A80A-D61624F13371}.Debug|x64.Build.0 = Debug|x64
+		{8F5DDEF7-514A-4B41-A80A-D61624F13371}.Release|Win32.ActiveCfg = Release|Win32
+		{8F5DDEF7-514A-4B41-A80A-D61624F13371}.Release|Win32.Build.0 = Release|Win32
+		{8F5DDEF7-514A-4B41-A80A-D61624F13371}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
