@@ -1,0 +1,1 @@
+A smoothing example from OpenCV C++ tutorial code.
