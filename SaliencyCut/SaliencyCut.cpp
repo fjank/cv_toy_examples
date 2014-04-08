@@ -66,8 +66,11 @@ void saliencyCut(Mat im, Mat salim, Mat &outim, bool intermediate, string interm
 		setMaskBorder(mask, borderWidth);//设置背景边框
 		//imshow("mask", mask);
 
-		//使用grabcut
-		grabCut(im, mask, rect, bgdmodel, fgdmodel, 1, GC_INIT_WITH_MASK);
+		//使用grabcut(注意到越界判断)
+		if (sum(mask&1).val[0] > 0){
+			grabCut(im, mask, rect, bgdmodel, fgdmodel, 1, GC_INIT_WITH_MASK);
+		}
+		
 
 		//设置输出图片
 		outim.setTo(0);
