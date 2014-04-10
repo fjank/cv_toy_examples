@@ -4,6 +4,9 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+
+cv::VideoWriter outputVideo; 
+
 /**
  * Perform one thinning iteration.
  * Normally you wouldn't call this function directly from your code.
@@ -38,10 +41,14 @@ void thinningIteration(cv::Mat& im, int iter)
 
             if (A == 1 && (B >= 2 && B <= 6) && m1 == 0 && m2 == 0)
                 marker.at<uchar>(i,j) = 1;
+			
         }
+		
     }
-
+	
     im &= ~marker;
+	outputVideo << (im*255);
+	
 }
 
 /**
@@ -65,6 +72,7 @@ void thinning(cv::Mat& im)
     while (cv::countNonZero(diff) > 0);
 
     im *= 255;
+
 }
 
 /**
@@ -72,7 +80,7 @@ void thinning(cv::Mat& im)
  */
 int main()
 {
-	cv::Mat src = cv::imread("lena.jpg");
+	cv::Mat src = cv::imread("input2.png");
 	if (src.empty())
         return -1;
 
@@ -80,11 +88,18 @@ int main()
     cv::cvtColor(src, bw, CV_BGR2GRAY);
     cv::threshold(bw, bw, 128, 255, CV_THRESH_BINARY);
 
+	//bw = 255-bw;//先翻转图像
+	outputVideo.open("output2.avi", CV_FOURCC('M','J','P','G'), 20, bw.size(), false);
+	//for (int i = 0; i < 10000; i++)
+	//	outputVideo.write(Mat(bw.size(), CV_8UC1, Scalar(255)));
+
     thinning(bw);
 
-    cv::imshow("src", src);
-    cv::imshow("dst", bw);
-    cv::waitKey(0);
+	//bw = 255 - bw;//处理结束后将图像翻转回来
+
+    //cv::imwrite("src", src);
+    cv::imwrite("output2.png", bw);
+    //cv::waitKey(0);
 
     return 0;
 }
