@@ -80,7 +80,7 @@ void thinning(cv::Mat& im)
  */
 int main()
 {
-	cv::Mat src = cv::imread("input2.png");
+	cv::Mat src = cv::imread("d:\\row3.png");
 	if (src.empty())
         return -1;
 
