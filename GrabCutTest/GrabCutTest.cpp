@@ -7,8 +7,8 @@ using namespace cv;
 
 int main(){
 
-	string dir_path = "./";
-	string out_path = "./";
+	string dir_path = "D:\\研究生阶段工作\\201402 CNN\\CNN分割结果的优化问题\\20140417之后的优化工作\\20140513 跑实验\\data\\NEWresize.test.img\\";
+	string out_path = "D:\\研究生阶段工作\\201402 CNN\\CNN分割结果的优化问题\\20140417之后的优化工作\\20140513 跑实验\\20140519 截取四分之一grabcut\\NEWresize grabcut output\\";
 	Directory dir; 
 	vector<string> fileNames = dir.GetListFiles(dir_path, "*.jpg", false ); 
 
