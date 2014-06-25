@@ -23,9 +23,7 @@ void saliencyCut(Mat im, Mat salim, Mat &outim, bool intermediate, string interm
 	//第一次grabcut
 	Mat bgdmodel, fgdmodel;
 	Rect rect;//(10, 10, im.size().width-20, im.size().height-20);//实际上rect在代码中是没有用上的
-	if (sum(mask&1).val[0] > 0){
-		grabCut(im, mask, rect, bgdmodel, fgdmodel, 1, GC_INIT_WITH_MASK);
-	}
+	grabCut(im, mask, rect, bgdmodel, fgdmodel, 1, GC_INIT_WITH_MASK);
 
 	outim.setTo(0);
 	outim.setTo(255, mask&1);
